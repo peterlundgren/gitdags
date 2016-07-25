@@ -81,17 +81,14 @@
     shape          = rectangle,
     minimum height = 1.4em,
     draw           = solarized-base01,
-    thick,
     font           = \fontfamily{lmtt}\selectfont\scriptsize,
   },
   DAGedge/.style={
-    semithick,
     Latex-,
     draw = gray,
   },
   DAGrefedge/.style={
     DAGedge,
-    thick,
     densely dotted,
   },
   DAGcommit/.style={
@@ -102,7 +99,7 @@
     minimum width                = 2em,
     draw                         = solarized-base01,
     fill                         = solarized-green!20,
-    very thick,
+    semithick,
   },
   graphs/DAG/.style={
     nodes          = DAGcommit,
@@ -117,7 +114,6 @@
     minimum width   = 7em,
     minimum height  = 3em,
     text opacity    = 0.75,
-    semithick,
   },
   gitSA/.style={
     gitareas,
@@ -138,7 +134,6 @@
   resetarrows/.style={
     -Stealth,
     dashed,
-    thick,
     draw         = solarized-base02,
     draw opacity = .75,
   },
