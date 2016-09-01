@@ -200,6 +200,21 @@
   \draw[DAGrefedge] (#4) -- (\nodename@gitdags);
 }
 
+\newcommand\oldgitbranch[4][]{%
+  \renewcommand\nodename@gitdags{#1}%
+  \if\relax\detokenize{#1}\relax% check for empty optional argument
+    \renewcommand\nodename@gitdags{#2}%
+  \fi
+  \node[
+    DAGref,
+    fill = yellow!30,
+    reset preaction,
+    draw opacity = .25,
+    fill opacity = .25,
+  ] (\nodename@gitdags) [#3] {#2};
+  \draw[DAGrefedge] (#4) -- (\nodename@gitdags);
+}
+
 % remote-branch reference
 \newcommand\gitremotebranch[4][]{%
   \renewcommand\nodename@gitdags{#1}%
@@ -209,6 +224,21 @@
   \node[
     DAGref,
     fill = solarized-blue!20,
+  ] (\nodename@gitdags) [#3] {#2};
+  \draw[DAGrefedge] (#4) -- (\nodename@gitdags);
+}
+
+\newcommand\oldgitremotebranch[4][]{%
+  \renewcommand\nodename@gitdags{#1}%
+  \if\relax\detokenize{#1}\relax% check for empty optional argument
+    \renewcommand\nodename@gitdags{#2}%
+  \fi
+  \node[
+    DAGref,
+    fill = solarized-blue!20,
+    reset preaction,
+    draw opacity = .25,
+    fill opacity = .25,
   ] (\nodename@gitdags) [#3] {#2};
   \draw[DAGrefedge] (#4) -- (\nodename@gitdags);
 }
@@ -232,6 +262,18 @@
     DAGref,
     fill          = solarized-red!20,
     node distance = 1em,
+  ] (gitHEAD) [#1] {HEAD};
+  \draw[DAGrefedge] (#2) -- (gitHEAD);
+}
+
+\newcommand\oldgitHEAD[2]{%
+  \node[
+    DAGref,
+    fill          = solarized-red!20,
+    node distance = 1em,
+    reset preaction,
+    draw opacity = .25,
+    fill opacity = .25,
   ] (gitHEAD) [#1] {HEAD};
   \draw[DAGrefedge] (#2) -- (gitHEAD);
 }
